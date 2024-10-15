@@ -1,0 +1,25 @@
+{
+  "name": "workerd-ping-pong-repro",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:server": "node -r esbuild-register src/server.ts",
+    "start:worker": "wrangler dev",
+    "start:node": "node -r esbuild-register src/node-client.ts",
+    "start": "concurrently \"npm run start:server\" \"npm run start:worker\" \"npm run start:node\" \"open http://localhost:8787/workerd\" --names 'server,worker,node' --prefix-colors 'bgBlue.bold,bgGreen.bold,bgRed.bold'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@cloudflare/workers-types": "^4.20241011.0",
+    "@types/node": "^22.7.5",
+    "@types/ws": "^8.5.12",
+    "concurrently": "^9.0.1",
+    "esbuild-register": "^3.6.0",
+    "typescript": "^5.6.3",
+    "wrangler": "^3.80.4",
+    "ws": "^8.18.0"
+  }
+}
